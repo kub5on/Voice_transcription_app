@@ -17,7 +17,7 @@ def voice_transcription():
                 try:
                     res = r.recognize_google(audio, language="pl-PL")
                     all.append(res)
-                    print("You said" + res)
+                    print("You said: " + res)
                 except sr.UnknownValueError:
                     print("Google Speech Recognition could not understand audio")
                 except sr.RequestError as e:
