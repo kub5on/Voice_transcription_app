@@ -12,7 +12,10 @@ def voice_transcription():
         print("Start talking: ")
         try:
             while True:
-                audio = r.listen(source)
+                try:
+                    audio = r.listen(source, timeout=1, phrase_time_limit=10)
+                except sr.WaitTimeoutError:
+                    continue
 
                 try:
                     res = r.recognize_google(audio, language="pl-PL")
