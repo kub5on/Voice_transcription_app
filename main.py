@@ -1,5 +1,5 @@
 import speech_recognition as sr
-import os
+import time
 
 
 def voice_transcription():
@@ -19,7 +19,8 @@ def voice_transcription():
 
                 try:
                     res = r.recognize_google(audio, language="pl-PL")
-                    all.append(res)
+                    timestamp = time.strftime("[%H:%M:%S] ")
+                    all.append(timestamp + res)
                     print("You said: " + res)
                 except sr.UnknownValueError:
                     print("Google Speech Recognition could not understand audio")
